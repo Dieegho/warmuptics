@@ -1,6 +1,6 @@
 from urllib.request import Request, urlopen # abre una url
 from re import findall # expresiones regulares
-import sys, math, time
+import sys, time
 
 #Funcion para obtener el valor de la UTM del mes actual
 def get_UTM():
@@ -163,7 +163,13 @@ if __name__ == '__main__':
         print()
 
         if (option == 1): #opcion para calcular el sueldo bruto a base de un liquido
-            sueldo_liquido = int(input("Ingrese el sueldo líquido:\n=> "))
+            while True:
+                sueldo_liquido = int(input("Ingrese el sueldo líquido:\n=> "))
+                if sueldo_liquido <= 0:
+                    print("Ingrese un sueldo positivo por favor!\n")
+                    time.sleep(1) #Lapso de tiempo de espera del programa
+                else:
+                    break
             print()
             ans = round(liq_bruto(sueldo_liquido, valor_utm))
             print("El sueldo bruto que obtendrá con", sueldo_liquido, "de sueldo líquido es:", ans)
@@ -171,7 +177,13 @@ if __name__ == '__main__':
             otra_operacion()
 
         elif (option == 2): #opcion para calcular el sueldo liquido a base de un bruto
-            sueldo_bruto = int(input("Ingrese el sueldo bruto:\n=> "))
+            while True:
+                sueldo_bruto = int(input("Ingrese el sueldo bruto:\n=> "))
+                if sueldo_bruto <= 0:
+                    print("Ingrese un sueldo positivo por favor!\n")
+                    time.sleep(1) #Lapso de tiempo de espera del programa
+                else:
+                    break
             print()
             ans = round(bruto_liq(sueldo_bruto, valor_utm))
             print("El sueldo líquido que obtendrá con", sueldo_bruto, "de sueldo bruto es:", ans)
